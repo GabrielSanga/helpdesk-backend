@@ -53,6 +53,16 @@ public class TecnicoService {
 		
 		return repository.save(oldObjTecnico);
 	}
+	
+	public void delete(Integer id) {
+		Tecnico oTecnico = findById(id);
+		
+		if(oTecnico.getChamados().size() > 0) {
+			throw new DataIntegrityViolationException("Técnico possui um serviço, não é possível exclui-lo!");
+		}
+		
+		repository.deleteById(id);
+	}
 
 	private void ValidaCPFEmail(TecnicoDTO oTecnicoDTO) {
 		Optional<Pessoa> oPessoa = pessoaRepository.findByCpf(oTecnicoDTO.getCpf());
@@ -65,9 +75,5 @@ public class TecnicoService {
 			throw new DataIntegrityViolationException("E-mail já cadastrado no sistema!");
 		}
 	}
-
-
-
-
 
 }
