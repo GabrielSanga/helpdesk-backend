@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gabriel.helpdesk.domain.Tecnico;
+import com.gabriel.helpdesk.domain.dtos.TecnicoDTO;
 import com.gabriel.helpdesk.repositores.TecnicoRepository;
 import com.gabriel.helpdesk.services.exceptions.ObjectNotFoundException;
 
@@ -22,9 +23,14 @@ public class TecnicoService {
 		return oTecnico.orElseThrow(() -> new ObjectNotFoundException("Técnico não encontrado! ID: " + id));	
 	}
 
-	public List<Tecnico> findAll() {
-		List<Tecnico> lstTecnico = repository.findAll();
-		return lstTecnico;
+	public List<Tecnico> findAll() {		
+		return repository.findAll();
+	}
+
+	public Tecnico create(TecnicoDTO oTecnicoDTO) {
+		oTecnicoDTO.setId(null);
+		Tecnico oTecnico = new Tecnico(oTecnicoDTO);
+		return repository.save(oTecnico);
 	}
 
 }
