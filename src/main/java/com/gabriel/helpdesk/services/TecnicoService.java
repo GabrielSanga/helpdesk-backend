@@ -3,6 +3,8 @@ package com.gabriel.helpdesk.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +41,18 @@ public class TecnicoService {
 		Tecnico oTecnico = new Tecnico(oTecnicoDTO);
 		return repository.save(oTecnico);
 	}
+	
+	public Tecnico update(Integer id, @Valid TecnicoDTO oTecnicoDTO) {
+		oTecnicoDTO.setId(id);
+		
+		Tecnico oldObjTecnico = findById(id);
+		
+		ValidaCPFEmail(oTecnicoDTO);
+		
+		oldObjTecnico = new Tecnico(oTecnicoDTO);
+		
+		return repository.save(oldObjTecnico);
+	}
 
 	private void ValidaCPFEmail(TecnicoDTO oTecnicoDTO) {
 		Optional<Pessoa> oPessoa = pessoaRepository.findByCpf(oTecnicoDTO.getCpf());
@@ -51,6 +65,8 @@ public class TecnicoService {
 			throw new DataIntegrityViolationException("E-mail já cadastrado no sistema!");
 		}
 	}
+
+
 
 
 

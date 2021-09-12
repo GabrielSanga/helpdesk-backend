@@ -26,14 +26,14 @@ public class DBService {
 	private ChamadoRepository chamadoRepository;
 
 	public void instanciaDB() {
-		Tecnico oTecnico = new Tecnico(null, "Gabriel Sanga", "657.389.900-80", "gabriel.sanga@gmail.com", "12340");
+		Tecnico oTecnico = new Tecnico(null, "Gabriel Sanga", "69802545023", "gabriel.sanga@gmail.com", "12340");
 		oTecnico.addPerfil(Perfil.ADMIN);
 		
-		Tecnico oTecnico2 = new Tecnico(null, "Marcos Doub", "657.389.900-84", "marcos@gmail.com", "223430");
+		Tecnico oTecnico2 = new Tecnico(null, "Marcos Doub", "06937420030", "marcos@gmail.com", "223430");
 		
-		Cliente oCliente = new Cliente(null, "Pedro Rocha", "657.382.945-80", "pedro@gmail.com", "1234452");
+		Cliente oCliente = new Cliente(null, "Pedro Rocha", "97841791054", "pedro@gmail.com", "1234452");
 		
-		Cliente oCliente2 = new Cliente(null, "Teste H2", "657.382.945-83", "teste@gmail.com", "4321");
+		Cliente oCliente2 = new Cliente(null, "Teste H2", "00827598041", "teste@gmail.com", "4321");
 		
 		Chamado oChamado = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado.", oCliente, oTecnico);
 	
