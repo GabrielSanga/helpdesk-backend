@@ -1,5 +1,6 @@
 package com.gabriel.helpdesk.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ public class TecnicoService {
 		Optional<Tecnico> oTecnico = repository.findById(id);
 		
 		return oTecnico.orElseThrow(() -> new ObjectNotFoundException("Técnico não encontrado! ID: " + id));	
+	}
+
+	public List<Tecnico> findAll() {
+		List<Tecnico> lstTecnico = repository.findAll();
+		return lstTecnico;
 	}
 
 }
