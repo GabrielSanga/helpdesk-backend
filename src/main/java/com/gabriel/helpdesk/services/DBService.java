@@ -31,10 +31,13 @@ public class DBService {
 		
 		Cliente oCliente = new Cliente(null, "Pedro Rocha", "657.382.945-80", "pedro@gmail.com", "1234452");
 		
+		Cliente oCliente2 = new Cliente(null, "Teste H2", "657.382.945-83", "teste@gmail.com", "4321");
+		
 		Chamado oChamado = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "Chamado 01", "Primeiro Chamado.", oCliente, oTecnico);
 	
 		tecnicoRepository.saveAll(Arrays.asList(oTecnico));
 		clienteRepository.saveAll(Arrays.asList(oCliente));
+		clienteRepository.saveAll(Arrays.asList(oCliente2));
 		chamadoRepository.saveAll(Arrays.asList(oChamado));
 	}
 
